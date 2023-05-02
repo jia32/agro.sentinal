@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pwc.agro.sentinal.dao.PivotDAO">
+    <select id="listFoodType" resultType="java.lang.String" >
+        select distinct food_type from pivot
+    </select>
+    <select id="findByFood" resultType="com.pwc.agro.sentinal.dto.Pivot" >
+        select * from pivot pi
+        where 1=1
+        <if test="food != null and food != ''">
+            and pi.food_type = #{food}
+        </if>
+
+    </select>
+</mapper>
